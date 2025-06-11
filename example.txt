@@ -1,0 +1,70 @@
+using System;
+
+namespace PolymorphismExample
+{
+    
+    class Animal
+    {
+        public virtual void MakeSound()
+        {
+            Console.WriteLine("Animal makes a sound.");
+        }
+    }
+
+  
+    class Dog : Animal
+    {
+        public override void MakeSound()
+        {
+            Console.WriteLine("Dog barks.");
+        }
+    }
+
+  
+    class Cat : Animal
+    {
+        public override void MakeSound()
+        {
+            Console.WriteLine("Cat meows.");
+        }
+    }
+
+    class Calculator
+    {
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        public double Add(double a, double b)
+        {
+            return a + b;
+        }
+
+        public int Add(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Runtime Polymorphism
+            Animal myAnimal = new Animal();
+            Animal myDog = new Dog();
+            Animal myCat = new Cat();
+
+            myAnimal.MakeSound();  
+            myDog.MakeSound();    
+            myCat.MakeSound();    
+
+            // Compile-time Polymorphism
+            Calculator calc = new Calculator();
+            Console.WriteLine("Add(2, 3) = " + calc.Add(2, 3));           
+            Console.WriteLine("Add(2.5, 3.5) = " + calc.Add(2.5, 3.5));  
+            Console.WriteLine("Add(1, 2, 3) = " + calc.Add(1, 2, 3));     
+        }
+    }
+}
